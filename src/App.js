@@ -6,38 +6,24 @@ const api = {
   base: "https://api.openweathermap.org/data/2.5/"
 }
 function App() {
+  document.title= "weather-app"
   const [cityName, setCityName] = useState('')
   const [weather, setWeather] = useState({})
 
-  const search = evt => {
-    if (evt.key === "Enter") {
-      fetch(`${api.base}weather?q=${cityName}&lang=tr&APPID=${api.key}`)
-        .then(res => res.json())
-        .then(result => {
-          setWeather(result);
-          setCityName('');
-          console.log(result)
-        })
-    }
+  async function getSearch() {
+    const query = await fetch(`${api.base}weather?q=${cityName}&APPID=${api.key}`, { method: 'GET' })
+    const json = await query.json();
+    const data = json;
+    setWeather(data)
+    setCityName('')
+    console.log("hello", data)
   }
 
-  // async function getSearch(evt) {
-  //   if (evt.key === "Enter")
-  //   console.log(evt.key)
-  //   {
-  //     const query = await fetch(
-  //       `${api.base}weather?q={cityName}&units=metric&APPID=${api.key}`,
-  //       { method: 'GET' }
-  //     )
-  //     const json = await query.json();
-  //     const data = json;
-  //     setWeather(data)
-  //     console.log("hello", weather)
-  //   }
-  // }
-  // useEffect(() => {
-  //   getSearch()
-  // })
+  async function search(event) {
+    if (event.key === 'Enter') {
+      await getSearch();
+    }
+  }
 
   const dateBuilder = (d) => {
     let months = ["January", "February", "March", "April", "May", "June", "July", "August",
@@ -53,7 +39,7 @@ function App() {
   }
 
   return (
-    <div className={(typeof weather.main != "undefined") ? ((weather.main.temp-273.15 > 16) ? 'appwarm' : 'app') : 'app'}>
+    <div className={(typeof weather.main != "undefined") ? ((weather.main.temp - 273.15 > 16) ? 'appwarm' : 'app') : 'app'}>
       <main>
         <div className="search-box">
           <input
@@ -71,7 +57,7 @@ function App() {
               <div className="location">{weather.name}, {weather.sys.country}</div>
               <div className="date">{dateBuilder(new Date())}</div>
             </div>
-            <div className="temperature">{Math.round(weather.main.temp-273.15)}°C</div>
+            <div className="temperature">{Math.round(weather.main.temp - 273.15)}°C</div>
             <div className="condition">{weather.weather[0].main}</div>
           </div>
         ) : ('')}
