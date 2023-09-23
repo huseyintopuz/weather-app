@@ -4,19 +4,24 @@
   box-sizing: border-box;
 }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 .app {
   background-image: url("./images/cloudy2.jpeg");
   background-size: cover;
   background-position: center;
   transition: 0.4 ease;
+  height: 100%;
+  padding: 4rem;
 }
 .appwarm {
   background-image: url("./images/sunny.jpeg");
   background-size: cover;
   background-position: center;
   transition: 0.4 ease;
+  height: 100%;
+  padding: 4rem;
 }
 main {
   display: flex;
@@ -24,52 +29,63 @@ main {
   align-items: center;
   height: 100vh;
 }
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tag {
+  color: #f8fcff;
+  font-size: 3rem;
+}
 .search {
-  width: 25rem;
+  width: 32rem;
   padding: 1rem;
   font-size: 20px;
   border-radius: 0 0 15px 15px;
   background-color: rgb(255, 255, 255, 0.5);
   outline: none;
   border: none;
-  box-shadow: 0 5px rgba(0, 0, 0, 0.2 );
+  box-shadow: 0 5px rgba(0, 0, 0, 0.2);
+  margin-top: 3rem;
 }
 .search:focus {
   background-color: rgb(255, 255, 255, 0.85);
 }
 .location-box {
-  margin-top: 5rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
   text-align: center;
 }
 .location {
-  color: #F8FCFF;
+  color: #f8fcff;
   font-size: 2.5rem;
   text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
 }
 .date {
   margin-top: 3px;
-  color: #F8FCFF;
+  color: #f8fcff;
   font-size: 1.2rem;
   text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
   font-style: italic;
 }
 .temperature {
   font-size: 5rem;
-  margin-top: 3rem;
   padding: 1rem;
   text-align: center;
-  color: #F8FCFF;
+  color: #f8fcff;
   background-color: rgb(255, 255, 255, 0.5);
   border-radius: 15px;
-  box-shadow: 3px 6px rgba(0, 0, 0, 0.2 );
+  box-shadow: 3px 6px rgba(0, 0, 0, 0.2);
   text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
-  
+  width: 20rem;
+  margin: 0 auto;
 }
 .condition {
   font-size: 3rem;
   margin-top: 1.5rem;
   padding: 1rem;
-  color: #F8FCFF;
+  color: #f8fcff;
   text-align: center;
   text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
 }
